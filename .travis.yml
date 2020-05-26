@@ -24,7 +24,6 @@ script:
   - cd build_debug
   - CC=/usr/bin/gcc-8 CXX=/usr/bin/g++-8 cmake -DCMAKE_BUILD_TYPE=Debug -DPSI_ANALYTICS_BUILD_TESTS=ON -j 2 ..
   - make -j 5
-  # travis does not support IPv6 ...
   - ./bin/psi_analytics_eurocrypt19_test --gtest_filter='-*2_20*'
 
 notifications:
