@@ -10,3 +10,7 @@ target_link_libraries(psi_analytics_eurocrypt19_test PUBLIC
 target_include_directories(psi_analytics_eurocrypt19_test PRIVATE
         "${PSI_ANALYTICS_SOURCE_ROOT}/extern/googletest/googletest/include"
         )
+        
+set_target_properties(psi_analytics_eurocrypt19_test
+        PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+        )

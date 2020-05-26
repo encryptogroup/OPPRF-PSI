@@ -19,6 +19,10 @@ add_library(psi_analytics_eurocrypt19
         polynomials/Poly.cpp
         ots/ots.cpp
         )
+        
+set_target_properties(psi_analytics_eurocrypt19
+        PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
+        )
 
 target_compile_options(psi_analytics_eurocrypt19
         PRIVATE
@@ -60,4 +64,7 @@ if (PSI_ANALYTICS_BUILD_EXAMPLE)
     target_link_libraries(psi_analytics_eurocrypt19_example PUBLIC
             psi_analytics_eurocrypt19
             )
+    set_target_properties(psi_analytics_eurocrypt19_example
+        PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+    )
 endif (PSI_ANALYTICS_BUILD_EXAMPLE)
