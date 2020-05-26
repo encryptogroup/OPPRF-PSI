@@ -7,6 +7,3 @@
 [submodule "extern/libOTe"]
 	path = extern/libOTe
 	url = https://github.com/osu-crypto/libOTe.git
-[submodule "extern/relic"]
-	path = extern/relic
-	url = https://github.com/relic-toolkit/relic.git
