@@ -7,3 +7,6 @@
 [submodule "extern/libOTe"]
 	path = extern/libOTe
 	url = https://github.com/osu-crypto/libOTe.git
+[submodule "extern/googletest"]
+	path = extern/googletest
+	url = https://github.com/google/googletest.git
