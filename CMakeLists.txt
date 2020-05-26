@@ -63,6 +63,8 @@ endif ()
 # we need to set these compile flags globally to compile compile libOTe and its dependencies
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -no-pie -pthread -maes -msse2 -msse3 -msse4.1 -mpclmul -mavx -mavx2")
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-ignored-attributes")
+
 set(ENABLE_SIMPLESTOT ON CACHE BOOL "Enable Simplest OT for Base OTs" FORCE)
 find_package(libOTe QUIET)
 if (libOTe_FOUND)
