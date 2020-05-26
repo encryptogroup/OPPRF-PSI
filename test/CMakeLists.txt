@@ -7,7 +7,7 @@ target_link_libraries(psi_analytics_eurocrypt19_test PUBLIC
         gtest
         )
 
-target_include_directories(psi_analytics_eurocrypt19_test PRIVATE
-        ${CMAKE_PROJECT_DIR}
-        ${CMAKE_PROJECT_DIR}/extern/ABY/extern/ENCRYPTO_utils/extern/googletest/googletext/include
-        )
+#target_include_directories(psi_analytics_eurocrypt19_test PRIVATE
+#        ${CMAKE_PROJECT_DIR}
+#        ${CMAKE_PROJECT_DIR}/extern/ABY/extern/ENCRYPTO_utils/extern/googletest/googletext/include
+#        )
