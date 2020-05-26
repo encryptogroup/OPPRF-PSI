@@ -1,4 +1,4 @@
-# OPPRF-PSI
+# OPPRF-PSI [![Build Status](https://travis-ci.org/encryptogroup/OPPRF-PSI.svg?branch=master)](https://travis-ci.org/encryptogroup/OPPRF-PSI)
 
 An implementation of the first cirucit-based private set 
 intersection protocol with linear communication complexity, which was presented at 
