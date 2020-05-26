@@ -11,7 +11,7 @@ addons:
 before_install:
   - sudo add-apt-repository -y ppa:mhier/libboost-latest
   - sudo apt-get update
-  - sudo apt-get install -y g++-8 libboost1.70-dev libgmp-dev libssl-dev
+  - sudo apt-get install -y g++-8 libboost1.70-dev libgmp-dev libssl-dev libntl-dev
   # Install a recent CMake
   - mkdir $HOME/prefix
   - export PATH="$HOME/prefix/bin:$PATH"
