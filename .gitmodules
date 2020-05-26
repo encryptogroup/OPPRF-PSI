@@ -3,7 +3,7 @@
 	url = https://github.com/encryptogroup/ABY.git
 [submodule "extern/HashingTables"]
 	path = extern/HashingTables
-	url = ssh://git@github.com/Oleksandr-Tkachenko/HashingTables.git
+	url = https://github.com/Oleksandr-Tkachenko/HashingTables.git
 [submodule "extern/libOTe"]
 	path = extern/libOTe
 	url = https://github.com/osu-crypto/libOTe.git
