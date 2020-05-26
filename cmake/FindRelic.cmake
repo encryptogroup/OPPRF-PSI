@@ -1,6 +1,6 @@
 find_package(PkgConfig)
 
-set(RLC_LIBRARY "${PSI_ANALYTICS_BINARY_ROOT}/extern/relic/lib/librelic_s.a")
+set(RLC_LIBRARY "${PSI_ANALYTICS_BINARY_ROOT}/extern/ABY/lib/librelic_s.a")
 set(Relic_INCLUDE_DIR "${PSI_ANALYTICS_BINARY_ROOT}/include")
 set(RLC_INCLUDE_DIR ${Relic_INCLUDE_DIR})
 

@@ -18,38 +18,7 @@ find_package(Threads REQUIRED)
 
 set(ENABLE_RELIC ON CACHE BOOL "Build relic by default" FORCE)
 set(MULTI PTHREAD CACHE STRING "Build relic with multithreading from pthread" FORCE)
-find_package(RELIC QUIET)
-if (RELIC_FOUND)
-    message(STATUS "Found RELIC")
-elseif (NOT RELIC_FOUND)
-    message("RELIC was not found: add RELIC subdirectory")
-        if (NOT EXISTS "${PROJECT_SOURCE_DIR}/extern/relic/CMakeLists.txt")
-            find_package(Git REQUIRED)
-            message("initialize Git submodule: extern/relic")
-            execute_process(COMMAND git submodule update --init extern/RELIC
-                WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}")
-    endif ()
-    add_subdirectory(extern/relic)
-
-    set(RLC_LIBRARY "${PSI_ANALYTICS_BINARY_ROOT}/extern/relic/lib/librelic_s.a")
-
-    add_library(Relic STATIC IMPORTED)
-    
-    set_target_properties(Relic PROPERTIES
-        IMPORTED_LOCATION ${RLC_LIBRARY}
-        INTERFACE_INCLUDE_DIRECTORIES "${PSI_ANALYTICS_BINARY_ROOT}/include;"
-    )
-    message("My relic path: ${PROJECT_SOURCE_DIR}/extern/relic/include/relic.h")
-    
-    file(COPY "${PROJECT_SOURCE_DIR}/extern/relic/include/" "${PSI_ANALYTICS_BINARY_ROOT}/extern/relic/include/relic_conf.h"
-        DESTINATION "${PROJECT_BINARY_DIR}/include/relic"
-    )
-    
-    
-    
-
-    target_link_libraries(Relic INTERFACE relic_s)
-endif ()
+set(WITH "MD;DV;BN;FB;FP;EB;EC;EP" CACHE STRING "Overwrite Relic algorithms in ABY with their superset" FORCE)
 
 find_package(ABY QUIET)
 set(ENCRYPTO_UTILS_BUILD_TESTS OFF CACHE BOOL "Disable tests for the ENCRYPTO utils library" FORCE)
@@ -65,6 +34,16 @@ elseif (NOT ABY_FOUND AND NOT TARGET ABY::aby)
     endif ()
     add_subdirectory(extern/ABY)
 endif ()
+
+# relic is already compiled by ENCRYPTO_utils, which is ABY's dependency
+set(RLC_LIBRARY "${PSI_ANALYTICS_BINARY_ROOT}/extern/ABY/lib/librelic_s.a")
+
+file(COPY
+        "${PROJECT_SOURCE_DIR}/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/"
+        "${PSI_ANALYTICS_BINARY_ROOT}/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_conf.h"
+    DESTINATION
+        "${PROJECT_BINARY_DIR}/include/relic"
+)
 
 find_package(HashingTables QUIET)
 if (HashingTables_FOUND)
@@ -97,6 +76,8 @@ elseif (NOT libOTe_FOUND AND NOT TARGET libOTe::libote)
     endif ()
     add_subdirectory(extern/libOTe)
 endif ()
+
+add_dependencies(libOTe relic_s)
 
 add_subdirectory(psi_analytics_eurocrypt19)
 

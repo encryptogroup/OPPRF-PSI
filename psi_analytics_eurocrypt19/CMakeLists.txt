@@ -38,6 +38,9 @@ target_link_libraries(psi_analytics_eurocrypt19 INTERFACE
         libOTe
         Boost::program_options
         Threads::Threads
+        # relic is a transitive dependency of libOTe right now
+        # change relic to another library (if needed) if this changes
+        relic_s
         )
 
 target_include_directories(psi_analytics_eurocrypt19 PUBLIC
