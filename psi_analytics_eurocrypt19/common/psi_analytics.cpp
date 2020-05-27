@@ -187,7 +187,7 @@ std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &elements,
 
   const auto oprf_end_time = std::chrono::system_clock::now();
   const duration_millis oprf_duration = oprf_end_time - oprf_start_time;
-  context.timings.hashing = oprf_duration.count();
+  context.timings.oprf = oprf_duration.count();
 
   const auto eval_poly_start_time = std::chrono::system_clock::now();
   for (auto poly_i = 0ull; poly_i < polynomials.size(); ++poly_i) {
@@ -381,7 +381,7 @@ void PrintTimings(const PsiAnalyticsContext &context) {
   std::cout << "Time for polynomials " << context.timings.polynomials << " ms\n";
   std::cout << "Time for transmission of the polynomials "
             << context.timings.polynomials_transmission << " ms\n";
-  std::cout << "Time for OPPRF " << context.timings.opprf << " ms\n";
+//  std::cout << "Time for OPPRF " << context.timings.opprf << " ms\n";
 
   std::cout << "ABY timings: online time " << context.timings.aby_online << " ms, setup time "
             << context.timings.aby_setup << " ms, total time " << context.timings.aby_total
