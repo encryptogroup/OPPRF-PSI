@@ -166,6 +166,10 @@ std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &elements,
   const auto oprf_start_time = std::chrono::system_clock::now();
 
   std::vector<uint64_t> masks_with_dummies = ot_receiver(cuckoo_table_v, context);
+  
+  const auto oprf_end_time = std::chrono::system_clock::now();
+  const duration_millis oprf_duration = oprf_end_time - oprf_start_time;
+  context.timings.oprf = oprf_duration.count();
 
   std::unique_ptr<CSocket> sock =
       EstablishConnection(context.address, context.port, static_cast<e_role>(context.role));
@@ -182,12 +186,15 @@ std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &elements,
   }
 
   std::vector<uint8_t> poly_rcv_buffer(context.nmegabins * context.polynomialbytelength, 0);
+  
+  const auto receiving_start_time = std::chrono::system_clock::now();
+  
   sock->Receive(poly_rcv_buffer.data(), context.nmegabins * context.polynomialbytelength);
   sock->Close();
-
-  const auto oprf_end_time = std::chrono::system_clock::now();
-  const duration_millis oprf_duration = oprf_end_time - oprf_start_time;
-  context.timings.oprf = oprf_duration.count();
+  
+  const auto receiving_end_time = std::chrono::system_clock::now();
+  const duration_millis sending_duration = receiving_end_time - receiving_start_time;
+  context.timings.polynomials_transmission = sending_duration.count();
 
   const auto eval_poly_start_time = std::chrono::system_clock::now();
   for (auto poly_i = 0ull; poly_i < polynomials.size(); ++poly_i) {
