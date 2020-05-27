@@ -204,7 +204,7 @@ std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &elements,
 
   const auto eval_poly_end_time = std::chrono::system_clock::now();
   const duration_millis eval_poly_duration = eval_poly_end_time - eval_poly_start_time;
-  context.timings.hashing = eval_poly_duration.count();
+  context.timings.polynomials = eval_poly_duration.count();
 
   std::vector<uint64_t> raw_bin_result;
   raw_bin_result.reserve(X.size());
