@@ -1,11 +1,11 @@
 //
-// \file psi_linear.cpp
+// \file psi_analytics_example.cpp
 // \author Oleksandr Tkachenko
 // \email tkachenko@encrypto.cs.tu-darmstadt.de
 // \organization Cryptography and Privacy Engineering Group (ENCRYPTO)
 // \TU Darmstadt, Computer Science department
 //
-// \copyright The AGPL License. Copyright Oleksandr Tkachenko
+// \copyright The MIT License. Copyright Oleksandr Tkachenko
 //
 
 #include <cassert>
