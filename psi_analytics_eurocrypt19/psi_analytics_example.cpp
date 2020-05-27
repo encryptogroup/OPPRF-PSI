@@ -95,5 +95,6 @@ int main(int argc, char **argv) {
   auto inputs = ENCRYPTO::GeneratePseudoRandomElements(context.neles, gen_bitlen);
   ENCRYPTO::run_psi_analytics(inputs, context);
   std::cout << "PSI circuit successfully executed" << std::endl;
+  PrintTimings(context);
   return EXIT_SUCCESS;
 }
