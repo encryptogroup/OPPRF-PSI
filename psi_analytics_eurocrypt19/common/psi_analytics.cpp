@@ -97,7 +97,7 @@ uint64_t run_psi_analytics(const std::vector<std::uint64_t> &inputs, PsiAnalytic
   }
 
   share_ptr s_out;
-  auto t_bitlen = static_cast<std::size_t>(std::ceil(std::log2(context.threshold)));
+  auto t_bitlen = static_cast<std::size_t>(std::ceil(std::log2(context.threshold + 1)));
   auto s_threshold = share_ptr(bc->PutCONSGate(context.threshold, t_bitlen));
   std::uint64_t const_zero = 0;
   auto s_zero = share_ptr(bc->PutCONSGate(const_zero, 1));
